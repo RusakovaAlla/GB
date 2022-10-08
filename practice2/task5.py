@@ -1,4 +1,4 @@
-# Вариант1
+# # Вариант1
 from secrets import randbelow #нельзя random - возьмём другой :)
 
 
@@ -17,14 +17,15 @@ from datetime import datetime
 
 
 def myShuffle2(some_list):
-    for i in range(0, len(some_list)):
-        j = datetime.now().microsecond % 10 >> 1  # текущее время в микросекундах
-        some_list[i], some_list[j] = some_list[j], some_list[i]
-        # some_list.reverse()
+    """%(len(some_list)-1),
+    это лучше, длину списка контролировать не нужно"""
+    for i in range(0, len(some_list)-1):
+            j = datetime.now().microsecond % 10 >> 3
+            some_list[i], some_list[j] = some_list[j], some_list[i]
     return some_list
 
 
 # Проверка:
-list1 = [8, -17, -12, 10, 3]
+list1 = [10, -12, -13, 8]
 print(f"Вариант1 - {myShuffle1(list1)}")
 print(f"Вариант2 - {myShuffle2(list1)}")
