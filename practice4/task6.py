@@ -52,8 +52,8 @@ def polinom_des(polinom_in_file):
 
 
 # разбираем полиномы на составляющие
-pol1 = polinom_des("polinom41.txt")
-pol2 = polinom_des("polinom42.txt")
+pol1 = polinom_des("polinom51.txt")
+pol2 = polinom_des("polinom52.txt")
 print(pol1, '\n', pol2)
 
 ext = max(pol2[1]+pol1[1])#ищем максимальную степень полиномов
@@ -103,29 +103,29 @@ for i in range(ext, -1, -1):
         elif sum_dict[i] == 1:
             sum_polinoms += f"+x"
         elif sum_dict[i] > 1:
-            sum_polinoms += f"+{sum_dict[i]}*x"
+            sum_polinoms += f"+{sum_dict[i]}x"
         else:
-            sum_polinoms += f"{sum_dict[i]}*x"
+            sum_polinoms += f"{sum_dict[i]}x"
     elif i < ext:
         if sum_dict[i] == 0:
             pass
         elif sum_dict[i] < -1:
-            sum_polinoms += f"{sum_dict[i]}*x**{i}"
+            sum_polinoms += f"{sum_dict[i]}x**{i}"
         elif sum_dict[i] == 1:
             sum_polinoms += f"+x**{i}"
         elif sum_dict[i] > 1:
-            sum_polinoms += f"+{sum_dict[i]}*x**{i}"
+            sum_polinoms += f"+{sum_dict[i]}x**{i}"
         else:
             sum_polinoms += f"-x**{i}"
     elif i == ext:
         if sum_dict[i] == -1:
             sum_polinoms += f"-x**{i}"
         elif sum_dict[i] < -1:
-            sum_polinoms += f"{sum_dict[i]}*x**{i}"
+            sum_polinoms += f"{sum_dict[i]}x**{i}"
         elif sum_dict[i] == 1:
             sum_polinoms += f"x**{i}"
         elif sum_dict[i] > 1:
-            sum_polinoms += f"{sum_dict[i]}*x**{i}"
+            sum_polinoms += f"{sum_dict[i]}x**{i}"
         else:
             pass
 
