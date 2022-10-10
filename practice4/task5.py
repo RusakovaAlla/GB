@@ -6,10 +6,8 @@
 def polinom_des(polinom_in_file):
     with open(polinom_in_file, "r") as file:
         some_polinom = file.readline()
-
-    some_polinom = some_polinom.split(" = ")[0]  # отделяем равно
     some_polinom = some_polinom.replace(" ", "")
-
+    some_polinom = some_polinom.split("=")[0]  # отделяем равно
     # обрабатываем отрицательные коэффициенты, если есть
     some_polinom = list(some_polinom)
     for i in range(len(some_polinom)-1, -1, -1):
