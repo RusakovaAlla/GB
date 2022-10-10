@@ -10,7 +10,7 @@ def polinom_des(polinom_in_file):
     some_polinom = some_polinom.split("=")[0]  # отделяем равно
     # обрабатываем отрицательные коэффициенты, если есть
     some_polinom = list(some_polinom)
-    for i in range(len(some_polinom)-1, -1, -1):
+    for i in range(len(some_polinom) - 1, -1, -1):
         if some_polinom[i] == "-":
             some_polinom.insert(i, "+")
             continue
@@ -18,8 +18,8 @@ def polinom_des(polinom_in_file):
             pass
     some_polinom = "".join(map(str, some_polinom))
     some_polinom = some_polinom.split("+")  # делим на элементы сам многочлен
-    #если первый элемент в строке был отрицательным, то после обработки в списке появится пустой элемент с индексом 0
-    try: #уберем пустой элемент, если он был, с обработкой исключения
+    # если первый элемент в строке был отрицательным, то после обработки в списке появится пустой элемент с индексом 0
+    try:  # уберем пустой элемент, если он был, с обработкой исключения
         some_polinom.remove('')
     except ValueError:
         pass
@@ -33,7 +33,7 @@ def polinom_des(polinom_in_file):
         if len(j) == 1:
             j.insert(0, '1' if 'x' in j else ('-1' if '-x' in j else '0'))
         some_polinom[enum].insert(0, j[0])
-    try: #для красоты и понимания происходящего, заменить отрицательный x
+    try:  # для красоты и понимания происходящего, заменить отрицательный x
         for i in some_polinom:
             if '-x' in i:
                 i[i.index('-x')] = 'x'
@@ -41,12 +41,11 @@ def polinom_des(polinom_in_file):
                 continue
     except ValueError:
         pass
-    power_list = [] #список степеней
+    power_list = []  # список степеней
     for i in some_polinom:
         power_list.append(int(i[2]))
 
     return some_polinom, power_list
-
 
 
 # разбираем полиномы на составляющие
@@ -54,10 +53,10 @@ pol1 = polinom_des("polinom41.txt")
 pol2 = polinom_des("polinom42.txt")
 print(pol1, '\n', pol2)
 
-ext = max(pol2[1]+pol1[1])#ищем максимальную степень полиномов
+ext = max(pol2[1] + pol1[1])  # ищем максимальную степень полиномов
 
 sum_dict = {}
-#складываем полиномы поэлементно
+# складываем полиномы поэлементно
 for i in range(ext, -1, -1):
     sum_dict[i] = 0
     for j in pol1[0]:

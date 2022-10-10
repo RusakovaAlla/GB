@@ -51,8 +51,6 @@ while sweets != 0:
             if player1 == 0 or bot == 0:
                 if i == 'player1':
                     takeout = control_player_takeout()
-                    #takeout = game_of_sweets(sweets, sweets_per_move_max)[0]
-                    print(f'Игрок {i} берет {takeout} конфет')
                     sweets -= takeout
                 else: #ходит бот
                     takeout = randint(1, 28) if takeout == 20 else 20-takeout if takeout < 20 else game_of_sweets(sweets, sweets_per_move_max)[0]
@@ -61,7 +59,6 @@ while sweets != 0:
             else:
                 if i == 'player1':
                     takeout = control_player_takeout()
-                    print(f'Игрок {i} берет {takeout} конфет')
                     sweets -= takeout
                 else: #ход бота
                     takeout = randint(1, 28) if game_of_sweets(sweets, sweets_per_move_max)[0] == 0 else game_of_sweets(sweets, sweets_per_move_max)[0]
@@ -70,9 +67,8 @@ while sweets != 0:
             if sweets < 29:
                 winner = i
                 break
-            else:
-                player1 += 1
-                bot += 1
+        player1 += 1
+        bot += 1
     else:
         for i in moves_order:
             if player1 == 0 or bot == 0:
@@ -82,11 +78,10 @@ while sweets != 0:
                     sweets -= takeout
                 else: #ход игрока
                     takeout = control_player_takeout()
-                    print(f'Игрок {i} берет {takeout} конфет')
                     sweets -= takeout
             else:
                 if i == 'bot':
-                    takeout = 29 - takeout[0]
+                    takeout = 29 - takeout
                     print(f'Игрок {i} берет {takeout} конфет')
                     sweets -= takeout
                 else: #ход игрока
@@ -95,9 +90,7 @@ while sweets != 0:
             if sweets < 29:
                 winner = i
                 break
-            else:
-                bot += 1
-                player1 += 1
-
+        bot += 1
+        player1 += 1
 else:
     print(f"Победил {winner}!")
