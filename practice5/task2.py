@@ -34,7 +34,6 @@ def check4win(array):
               [(0, 2), (1, 2), (2, 2)]]
     for combo in combos:
         if array[combo[0][0]][combo[0][1]] == array[combo[1][0]][combo[1][1]] == array[combo[2][0]][combo[2][1]]:
-            #array[combo[0]][combo[1]] == array[combo[1]][combo[1][1]] == array[combo[2][0]][combo[2][1]]:
             return array[combo[0][0]][combo[0][1]]
     return False
 
@@ -66,12 +65,13 @@ move = 0 #счетчик ходов
 print(place)
 while not winner:
     for i in range(0, 2):
-        player_answer = int(input(f"Ход игрока {players_list[i]}. Куда ставим {players_list[2][i]}? Укажите место "))
+        player_answer = None
         while player_answer not in choice_list.keys():
             try:
                 player_answer = int(input(f"Ход игрока {players_list[i]}. Куда ставим {players_list[2][i]}? Укажите индекс "))
-            except:
-                print("Клетка занята")
+                print("Клетка занята!") if player_answer >= 1 or player_answer <= 9 else ()
+            except ValueError:
+                print("Это не число! Повторите ввод")
                 continue
         place[choice_list[player_answer][0]][choice_list[player_answer][1]] = players_list[2][i]
         print(place)
