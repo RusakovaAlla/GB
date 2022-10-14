@@ -17,18 +17,22 @@
 # unique_nums = []
 # for i in range(amount+1):
 #     number = randint(-10, 10)
-#     if number not in unique_nums:
-#         unique_nums.append(number)
+#     unique_nums.append(number) if number not in unique_nums
+#
 # print(unique_nums)
 
 # Вариант3 - если список уже задан
 
 list_nums = [-8, 9, -3, 0, 4, -9, 10, 8, -3, 10, 2, 10, 0, -5, -9, -9, 4, -7, -2, -4]
 new_list = []
-for enum, i in enumerate(list_nums[:]):
-    if list_nums[enum] not in new_list:
-        new_list.append(i)
+[new_list.append(i) for enum, i in enumerate(list_nums[:]) if list_nums[enum] not in new_list]
 
 print(new_list)
 
-#Вопрос - можно ли как-то сразу удалять из списка повторяющиеся элементы через цикл? 
+# Вариант4 - c исправлением по оригинальному заданию, только неповторяющиеся элементы
+
+list_nums = [-8, 9, -3, 0, 4, -9, 10, 8, -3, 10, 2, 10, 0, -5, -9, -9, 4, -7, -2, -4]
+new_list = []
+[new_list.append(i) for i in list_nums[:] if len(list(filter(lambda x: x == i, list_nums))) == 1]
+
+print(new_list)

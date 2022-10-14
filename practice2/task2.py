@@ -14,8 +14,7 @@ def multiplyNumber():
             print(f"Вводите только целые числа!")
             continue
     mult_num = []
-    for i in range(1, number + 1):
-        mult_num.append(factorial(i))
+    [mult_num.append(factorial(i)) for i in range(1, number + 1)]
 
     return mult_num
 

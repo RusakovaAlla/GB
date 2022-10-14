@@ -9,10 +9,9 @@ def rangeDict():
         except ValueError:
             print(f"Вводите только целые числа!")
             continue
-    num_dict = dict()
-    for i in range(1, number+1):
-        num_dict[i] = 3*i+1
+    num_dict = {i: 3*i+1 for i in range(1, number+1)}
 
     return num_dict
+
 
 print(rangeDict())

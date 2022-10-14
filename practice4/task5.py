@@ -42,8 +42,7 @@ def polinom_des(polinom_in_file):
     except ValueError:
         pass
     power_list = []  # список степеней
-    for i in some_polinom:
-        power_list.append(int(i[2]))
+    [power_list.append(int(i[2])) for i in some_polinom]
 
     return some_polinom, power_list
 
